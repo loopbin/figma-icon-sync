@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figma SVG 图标管理器</title>
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --hover-color: #1d4ed8;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: var(--hover-color);
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .icon-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .icon-preview {
+      height: 100px;
+      margin-bottom: 1rem;
+      background: #f8fafc;
+      border-radius: 4px;
+      padding: 8px;
+    }
+
+    .icon-preview object {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .icon-name {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #374151;
+      word-break: break-word;
+    }
+
+    .checkbox-container {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+
+    .selected-count {
+      margin-left: 1rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="downloadSelected()">下载选中图标 (<span id="selectedCount">0</span>)</button>
+    <button onclick="refreshIcons()">刷新图标列表</button>
+  </div>
+  <div class="icon-grid" id="iconContainer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
