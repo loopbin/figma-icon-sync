@@ -1,5 +1,4 @@
 node_modules
 .vscode
 .qodo
-.env
 .DS_Store
